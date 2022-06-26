@@ -8,7 +8,7 @@ public class PageGeneratorManagerWordpress {
 		return new PageGeneratorManagerWordpress();
 	}
 
-	public UserLoginPageObject getUserHomePage(WebDriver driver) {
+	public UserLoginPageObject getUserLoginPage(WebDriver driver) {
 		return new UserLoginPageObject(driver);
 	}
 }
