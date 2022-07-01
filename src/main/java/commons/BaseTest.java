@@ -29,6 +29,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import factoryBrowser.LocalFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
@@ -108,14 +109,13 @@ public class BaseTest {
 	}
 	
 	protected WebDriver getBrowserDriver(String browserName, String url) {
+		LocalFactory driverFactory = new LocalFactory(browserName);
 		if (browserName.equals("chrome")){
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			driver = driverFactory.createDriver();
 		}
 		
 		else if (browserName.equals("firefox")){
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			driver = driverFactory.createDriver();
 		}
 		
 		else if (browserName.equals("edge")){

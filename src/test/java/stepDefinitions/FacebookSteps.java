@@ -13,7 +13,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class facebookSteps {
+public class FacebookSteps {
 	WebDriver driver;
 	
 	@Given("^Open facebook application$")

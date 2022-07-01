@@ -3,7 +3,7 @@ Feature: Create and edit new post
   I want to create and edit new post
 
   Scenario Outline: Create new post
-    Given Login as admin
+    Given Open admin page
      When Navigate to Posts page
       And Click Add New
       And Input "<title>" 
