@@ -9,7 +9,6 @@ Feature: Login
       And Input password "<password>"
       And Click login button
      Then Verify error "<message>"
-     And Close Application
   
     Examples: 
       | username    | password | message                                                                                                                      | 
@@ -21,9 +20,8 @@ Feature: Login
   @loginAdminSuccessfully
   Scenario: Verify login page
     Given Open wordpress login page
-    When Input username and password
-    |Username|Thuc Nguyen|
-    |Password|Test@123|
-    And Click login button
-    Then Verify logout button display
-    And Close Application
+     When Input username and password
+      | Username | Thuc Nguyen | 
+      | Password | Test@123    | 
+      And Click login button
+     Then Verify logout button display
