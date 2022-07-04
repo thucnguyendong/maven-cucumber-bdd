@@ -1,4 +1,4 @@
-package wordpress.interfaces;
+package wordpress.pageUI;
 
 public class LoginPageUI {
 

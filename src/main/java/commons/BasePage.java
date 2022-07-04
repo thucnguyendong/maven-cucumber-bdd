@@ -337,7 +337,7 @@ public class BasePage {
 	}
 	
 	/**
-	 * Get text of the element
+	 * Get value of the element
 	 * @param driver
 	 * @param xpathLocator of the element
 	 * @param attribute tag name of the element
@@ -352,7 +352,7 @@ public class BasePage {
 	}
 	
 	/**
-	 * Get text of the element
+	 * Get css value of the element
 	 * @param driver
 	 * @param xpathLocator of the element
 	 * @param css tag name of the element
