@@ -9,15 +9,13 @@ import commons.BaseTest;
 import commons.GlobalConstants;
 import commons.PageGeneratorManagerWordpress;
 import cucumber.api.DataTable;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumberOptions.Hooks;
-import wordpress.pages.AdminHomePageObject;
-import wordpress.pages.LoginPageObject;
+import wordpress.pageObject.AdminHomePageObject;
+import wordpress.pageObject.LoginPageObject;
 
 public class WordpressLoginSteps extends BaseTest {
 	WebDriver driver;
@@ -25,8 +23,7 @@ public class WordpressLoginSteps extends BaseTest {
 	AdminHomePageObject admin;
 	static String username,pass;
 	
-	@Before("@wordpressLogin")
-	public void initBrowser() {
+	public WordpressLoginSteps() {
 		driver = Hooks.openAndQuitBrowser();
 		login=PageGeneratorManagerWordpress.getPageGenerator().getLoginPage(driver);
 	}
@@ -55,17 +52,17 @@ public class WordpressLoginSteps extends BaseTest {
 	@When("^Input username and password$")
 	public void inputUsernameAndPassword(DataTable table) {
 		Map<String, String> loginValue = table.asMap(String.class, String.class);
-		login.inputUsername(loginValue.get("Username"));
-		login.inputPassword(loginValue.get("Password"));
+		username = loginValue.get("Username");
+		login.inputUsername(username);
+		pass = loginValue.get("Password");
+		login.inputPassword(pass);
 	}
 	
 	@When("^Login admin account$")
-	public void loginAsAdmin(DataTable table) {
-		Map<String, String> loginValue = table.asMap(String.class, String.class);
-		login.inputUsername(loginValue.get("Username"));
-		username = loginValue.get("Username");
-		login.inputPassword(loginValue.get("Password"));
-		pass = loginValue.get("Password");
+	public void loginAsAdmin() {
+		login.openBrowser(driver, GlobalConstants.WORDPRESS_LOGIN_PAGE_URL);
+		login.inputUsername(username);
+		login.inputPassword(pass);
 		admin = login.clickLoginButton();
 	}
 	

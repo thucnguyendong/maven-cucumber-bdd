@@ -2,8 +2,11 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
-import wordpress.pages.AdminHomePageObject;
-import wordpress.pages.LoginPageObject;
+import wordpress.pageObject.AdminCreatePostPageObject;
+import wordpress.pageObject.AdminHomePageObject;
+import wordpress.pageObject.AdminPostPageObject;
+import wordpress.pageObject.LoginPageObject;
+import wordpress.pageObject.PostPageObject;
 
 public class PageGeneratorManagerWordpress {
 	public static PageGeneratorManagerWordpress getPageGenerator() {
@@ -16,5 +19,18 @@ public class PageGeneratorManagerWordpress {
 
 	public AdminHomePageObject getAdminHomePage(WebDriver driver) {
 		return new AdminHomePageObject(driver);
+	}
+
+	public AdminPostPageObject getAdminPostPage(WebDriver driver) {
+		return new AdminPostPageObject(driver);
+	}
+
+	public AdminCreatePostPageObject getAdminCreatePostPage(WebDriver driver) {
+		return new AdminCreatePostPageObject(driver);
+	}
+
+	public PostPageObject getPostPage(WebDriver driver) {
+		// TODO Auto-generated method stub
+		return new PostPageObject(driver);
 	}
 }

@@ -1,10 +1,10 @@
-package wordpress.pages;
+package wordpress.pageObject;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.PageGeneratorManagerWordpress;
-import wordpress.interfaces.LoginPageUI;
+import wordpress.pageUI.LoginPageUI;
 
 public class LoginPageObject extends BasePage {
 	private WebDriver driver;
