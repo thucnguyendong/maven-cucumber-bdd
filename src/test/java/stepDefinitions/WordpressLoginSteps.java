@@ -58,14 +58,6 @@ public class WordpressLoginSteps extends BaseTest {
 		login.inputPassword(pass);
 	}
 	
-	@When("^Login admin account$")
-	public void loginAsAdmin() {
-		login.openBrowser(driver, GlobalConstants.WORDPRESS_LOGIN_PAGE_URL);
-		login.inputUsername(username);
-		login.inputPassword(pass);
-		admin = login.clickLoginButton();
-	}
-	
 	@Then("^Verify error \"([^\"]*)\"$")
 	public void verifyError(String message) {
 		Assert.assertEquals(login.getErrorText(),message);

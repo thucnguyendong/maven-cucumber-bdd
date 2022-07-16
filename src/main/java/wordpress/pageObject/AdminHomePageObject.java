@@ -24,5 +24,11 @@ public class AdminHomePageObject extends BasePage {
 		clickElement(driver, AdminHomePageUI.DYNAMIC_MENU_ITEM_BY_TEXT,itemText);
 		return PageGeneratorManagerWordpress.getPageGenerator().getAdminPostPage(driver);
 	}
+
+	public void clickLogOutButton() {
+		moveToElement(driver, AdminHomePageUI.MY_ACCOUNT_TAB);
+		waitForElementClickable(driver, AdminHomePageUI.LOGOUT_BUTTON);
+		clickElement(driver, AdminHomePageUI.LOGOUT_BUTTON);
+	}
 	
 }

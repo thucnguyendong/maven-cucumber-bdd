@@ -18,4 +18,9 @@ public class PostPageObject extends BasePage {
 		return getElementText(driver, PostPageUI.TITLE_TEXT);
 	}
 
+	public Object getPostContent() {
+		waitForElementVisible(driver, PostPageUI.CONTENT_TEXT);
+		return getElementText(driver, PostPageUI.CONTENT_TEXT);
+	}
+
 }
