@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import wordpress.pageObject.AdminCreatePostPageObject;
 import wordpress.pageObject.AdminHomePageObject;
 import wordpress.pageObject.AdminPostPageObject;
+import wordpress.pageObject.AdminUpdatePostPageObject;
 import wordpress.pageObject.LoginPageObject;
 import wordpress.pageObject.PostPageObject;
 
@@ -30,7 +31,10 @@ public class PageGeneratorManagerWordpress {
 	}
 
 	public PostPageObject getPostPage(WebDriver driver) {
-		// TODO Auto-generated method stub
 		return new PostPageObject(driver);
+	}
+
+	public AdminUpdatePostPageObject getAdminUpdatePostPage(WebDriver driver) {
+		return new AdminUpdatePostPageObject(driver);
 	}
 }

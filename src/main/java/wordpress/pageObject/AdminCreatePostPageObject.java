@@ -22,6 +22,7 @@ public class AdminCreatePostPageObject extends BasePage {
 	}
 
 	public void inputContentTextarea(String content) {
+		clearTextByKeyboard(driver, AdminCreatePostPageUI.CONTENT_TEXTAREA);
 		inputIntoElement(driver, AdminCreatePostPageUI.CONTENT_TEXTAREA, content);
 	}
 

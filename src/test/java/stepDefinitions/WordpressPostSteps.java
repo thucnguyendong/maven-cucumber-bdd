@@ -1,17 +1,19 @@
 package stepDefinitions;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import commons.BaseTest;
 import commons.PageGeneratorManagerWordpress;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumberOptions.Hooks;
-import org.junit.Assert;
 import wordpress.pageObject.AdminCreatePostPageObject;
 import wordpress.pageObject.AdminHomePageObject;
 import wordpress.pageObject.AdminPostPageObject;
+import wordpress.pageObject.AdminUpdatePostPageObject;
 import wordpress.pageObject.LoginPageObject;
 import wordpress.pageObject.PostPageObject;
 
@@ -22,11 +24,15 @@ public class WordpressPostSteps extends BaseTest {
 	AdminPostPageObject adminPostPage;
 	AdminCreatePostPageObject createPostPage;
 	PostPageObject postPage;
+	AdminUpdatePostPageObject updatePostPage;
 	
 	public WordpressPostSteps() {
 		driver = Hooks.openAndQuitBrowser();
 		login=PageGeneratorManagerWordpress.getPageGenerator().getLoginPage(driver);
 		adminHomePage = PageGeneratorManagerWordpress.getPageGenerator().getAdminHomePage(driver);
+		createPostPage = PageGeneratorManagerWordpress.getPageGenerator().getAdminCreatePostPage(driver);
+		postPage = PageGeneratorManagerWordpress.getPageGenerator().getPostPage(driver);
+		updatePostPage = PageGeneratorManagerWordpress.getPageGenerator().getAdminUpdatePostPage(driver);
 	}
 	
 	@When("^Navigate to Posts page$")
@@ -82,5 +88,30 @@ public class WordpressPostSteps extends BaseTest {
 	@Then("^Post with title \"([^\"]*)\" display$")
 	public void postWithTitleDisplay(String title){
 		Assert.assertEquals(postPage.getPostTitle(),title);	    
+	}
+	
+	@Then("^Post with content \"([^\"]*)\" display$")
+	public void postWithContentDisplay(String content){
+		Assert.assertEquals(postPage.getPostContent(),content);	    
+	}
+	
+	@When("^Click edit post with title \"([^\"]*)\"$")
+	public void clickEditPostWithTitle(String title) {
+	    updatePostPage = adminPostPage.clickEditButtonByTitle(title);	    
+	}
+
+	@When("^Click Update button$")
+	public void clickUpdateButton() {
+		updatePostPage.clickUpdateButton();	    
+	}
+
+	@Then("^Message Post updated display$")
+	public void messagePostUpdatedDisplay() {
+		assertTrue(updatePostPage.isPostUpdatedMesDisplay());	    
+	}
+
+	@Then("^Click View Post link on message$")
+	public void clickViewPostLinkOnMessage() {
+		postPage= updatePostPage.clickViewPostLink();	    
 	}
 }

@@ -351,6 +351,7 @@ public class BasePage {
 		return getElement(driver, getDynamicLocator(xpathLocator, params)).getAttribute(attributeName);
 	}
 	
+	
 	/**
 	 * Get css value of the element
 	 * @param driver
@@ -524,6 +525,11 @@ public class BasePage {
 		action.moveToElement(getElement(driver, xpathLocator)).perform();
 	}
 	
+	public void moveToElement(WebDriver driver, String xpathLocator, String...params) {
+		Actions action = new Actions(driver);
+		action.moveToElement(getElement(driver, getDynamicLocator(xpathLocator, params))).perform();
+	}
+	
 	/**
 	 * Interact with keyboard
 	 * @param driver
@@ -532,6 +538,16 @@ public class BasePage {
 	public void sendKeyboardToElement(WebDriver driver, String xpathLocator, Keys key) {
 		Actions action = new Actions(driver);
 		action.sendKeys(getElement(driver, xpathLocator),key).perform();
+	}
+	
+	/**
+	 * Interact with keyboard
+	 * @param driver
+	 * @param xpathLocator of the element
+	 */
+	public void clearTextByKeyboard(WebDriver driver, String xpathLocator) {
+		WebElement elem = this.getElement(driver, xpathLocator);		
+		elem.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 	}
 	
 	/**
